@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Madiha & Azan - Islamic Wedding Invitation</title>
   
-  <!-- Premium Fonts -->
+  <!-- Premium Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Amiri:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <!-- 3D Tilt Library -->
@@ -25,13 +25,12 @@
       color: #1a3322;
     }
 
-    /* ---------------- 1. REAL 3D VELVET CURTAINS ---------------- */
+    /* 1. REAL 3D VELVET CURTAINS */
     #curtain-container {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;
       display: flex; overflow: hidden; pointer-events: none;
     }
     
-    /* 3D Folds using complex gradients */
     .curtain {
       width: 50%; height: 100%;
       background-image: 
@@ -49,7 +48,7 @@
     .curtain.open-left { transform: translateX(-110%) scaleX(0.8); }
     .curtain.open-right { transform: translateX(110%) scaleX(0.8); }
 
-    /* Glowing Mandala Seal */
+    /* MANDALA SEAL */
     #tap-seal {
       position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
       z-index: 10000; cursor: pointer; text-align: center;
@@ -74,7 +73,7 @@
     }
     .seal-content span { font-family: 'Cinzel Decorative', serif; font-size: 14px; font-weight: bold; color: #052617; }
 
-    /* ---------------- 2. PREMIUM ISLAMIC CARD ---------------- */
+    /* 2. CARD CONTAINER */
     .card-wrapper { display: none; padding: 20px; width: 100%; max-width: 450px; perspective: 1000px; margin-top: 20px; }
     
     .islamic-card {
@@ -86,13 +85,11 @@
       transform-style: preserve-3d;
     }
 
-    /* Double Border Effect */
     .islamic-card::before {
       content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
       border: 1px solid #4a8275; border-radius: 8px; pointer-events: none;
     }
 
-    /* Hanging Lanterns (Fanoos) */
     .lantern {
       position: absolute; top: -10px; width: 40px;
       animation: swing 4s ease-in-out infinite alternate;
@@ -101,14 +98,13 @@
     .lantern.left { left: 20px; }
     .lantern.right { right: 20px; animation-delay: 1s; }
 
-    /* Typography */
     .bismillah { font-family: 'Amiri', serif; font-size: 34px; color: #0a3d28; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); transform: translateZ(30px); }
     
     .invite-line { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #666; margin-bottom: 25px; transform: translateZ(20px); }
     
     .name { font-family: 'Great Vibes', cursive; font-size: 55px; color: #052617; line-height: 0.9; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); transform: translateZ(50px); margin-top: 10px; }
     
-    .parents { font-size: 11px; font-weight: 500; color: #4a8275; margin-bottom: 15px; font-style: italic; transform: translateZ(30px); }
+    .parents { font-size: 12px; font-weight: 500; color: #4a8275; margin-top: 6px; margin-bottom: 15px; font-style: italic; transform: translateZ(30px); }
     
     .weds { font-family: 'Cinzel Decorative', serif; font-size: 18px; color: #d4af37; margin: 10px 0; transform: translateZ(20px); }
     
@@ -119,7 +115,7 @@
       font-weight: bold; margin: 15px 0; padding: 10px; border-top: 1px solid #d4af37; border-bottom: 1px solid #d4af37;
     }
 
-    /* ---------------- 3. SCRATCH CARD ---------------- */
+    /* 3. SCRATCH CARD */
     .scratch-wrapper {
       position: relative; width: 290px; height: 90px; margin: 25px auto;
       border-radius: 8px; overflow: hidden;
@@ -135,7 +131,7 @@
     .dua-secret p { font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 500; margin-top: 5px; color: #4a8275;}
     canvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: pointer; touch-action: none; }
 
-    /* ---------------- 4. BUTTONS & UI ---------------- */
+    /* 4. BUTTONS */
     .btn {
       display: inline-block; background: linear-gradient(135deg, #0a3d28 0%, #115c3a 100%);
       color: #fff; padding: 14px 30px; border-radius: 30px; text-decoration: none;
@@ -149,14 +145,13 @@
     @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 15px #d4af37; } 50% { transform: scale(1.05); box-shadow: 0 0 30px #f3e5ab; } 100% { transform: scale(1); box-shadow: 0 0 15px #d4af37; } }
     @keyframes slowSpin { 100% { transform: rotate(360deg); } }
     @keyframes swing { 0% { transform: rotate(-5deg); } 100% { transform: rotate(5deg); } }
-    
   </style>
 </head>
 <body>
 
-  <!-- Beautiful Soothing Islamic Nasheed (No Instruments) -->
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2023/07/26/audio_985bb5e6cd.mp3?filename=beautiful-islamic-nasheed-160166.mp3" type="audio/mpeg">
+  <!-- Islamic Music Audio Tag -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://assets.mixkit.co/music/preview/mixkit-middle-eastern-flute-and-percussion-228.mp3" type="audio/mpeg">
   </audio>
 
   <!-- 3D Velvet Curtains & Tap Seal -->
@@ -176,7 +171,7 @@
   <div class="card-wrapper" id="main-content">
     <div class="islamic-card" id="tilt-card">
       
-      <!-- CSS SVG Lanterns -->
+      <!-- Hanging Lanterns -->
       <img src="https://www.svgrepo.com/show/330836/lantern.svg" class="lantern left" style="filter: invert(62%) sepia(51%) saturate(614%) hue-rotate(5deg) brightness(97%) contrast(89%);">
       <img src="https://www.svgrepo.com/show/330836/lantern.svg" class="lantern right" style="filter: invert(62%) sepia(51%) saturate(614%) hue-rotate(5deg) brightness(97%) contrast(89%);">
       
@@ -186,13 +181,13 @@
       
       <!-- Bride Info -->
       <div class="name">Madiha</div>
-      <div class="parents">D/o Mr. & Mrs. A. Basit Shaikh</div>
+      <div class="parents">Daughter of Mr. & Mrs. A. Basit Shaikh</div>
       
       <div class="weds">Weds</div>
       
       <!-- Groom Info -->
       <div class="name">Azan</div>
-      <div class="parents">S/o Mr. & Mrs. Javed Shaikh</div>
+      <div class="parents">Son of Mr. & Mrs. Javed Shaikh</div>
 
       <div class="details">
         To share our joy and celebrate our wedding ceremony on the auspicious day of
@@ -215,54 +210,58 @@
         (Click below for exact location)
       </div>
 
-      <!-- Updated Exact Google Maps Link -->
+      <!-- Google Maps Link -->
       <a href="https://maps.app.goo.gl/FaJvCyufFj4SQwsj6?g_st=ac" target="_blank" class="btn">📍 OPEN IN MAPS</a>
 
     </div>
   </div>
 
   <script>
-    // --- 1. Realistic Curtain & Music Logic ---
     function startExperience() {
+      // 1. Play Background Music
+      var music = document.getElementById('bgMusic');
+      if (music) {
+        music.volume = 0.7;
+        var playPromise = music.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function(error) {
+            console.log("Audio play blocked:", error);
+          });
+        }
+      }
+
+      // 2. Hide Seal & Open 3D Curtains
       document.getElementById('tap-seal').style.transform = 'translate(-50%, -50%) scale(2)';
       document.getElementById('tap-seal').style.opacity = '0';
-      setTimeout(() => { document.getElementById('tap-seal').style.display = 'none'; }, 800);
+      setTimeout(function() { document.getElementById('tap-seal').style.display = 'none'; }, 800);
 
-      // Slide Curtains
       document.getElementById('left-curtain').classList.add('open-left');
       document.getElementById('right-curtain').classList.add('open-right');
 
-      // Play Islamic Nasheed Music
-      const music = document.getElementById('bgMusic');
-      music.volume = 0.8; 
-      music.play().catch(e => console.log("Audio play prevented by browser"));
-
-      // Show Main Card
-      setTimeout(() => {
+      // 3. Show Card & Init 3D Effects
+      setTimeout(function() {
         document.getElementById('curtain-container').style.display = 'none';
-        const cardWrapper = document.getElementById('main-content');
-        cardWrapper.style.display = 'block';
+        document.getElementById('main-content').style.display = 'block';
         
-        // Initialize 3D Tilt for mobile
-        VanillaTilt.init(document.querySelector("#tilt-card"), {
-          max: 12,          
-          speed: 400,       
-          glare: true,      
-          "max-glare": 0.3, 
-          gyroscope: true   
-        });
+        if (typeof VanillaTilt !== 'undefined') {
+          VanillaTilt.init(document.querySelector("#tilt-card"), {
+            max: 12,          
+            speed: 400,       
+            glare: true,      
+            "max-glare": 0.3, 
+            gyroscope: true   
+          });
+        }
 
-        // Init Scratch Canvas
         setupScratchCard();
       }, 1500);
     }
 
-    // --- 2. Awesome Foil Scratch Card Logic ---
     function setupScratchCard() {
       const canvas = document.getElementById('scratchCanvas');
+      if (!canvas) return;
       const ctx = canvas.getContext('2d');
       
-      // Draw Gold Foil Pattern for Cover
       let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
       gradient.addColorStop(0, '#c5a059');
       gradient.addColorStop(0.5, '#fdfcf8');
@@ -270,7 +269,6 @@
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Add elegant text
       ctx.fillStyle = '#052617';
       ctx.font = '600 14px Montserrat';
       ctx.textAlign = 'center';
