@@ -5,24 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   
-  <!-- Open Graph Tags for WhatsApp Premium Preview -->
   <meta property="og:title" content="Madiha & Azan | Royal Wedding Invitation">
   <meta property="og:description" content="We request the honour of your presence at our wedding ceremony on 12th Nov 2026.">
-  <meta property="og:image" content="https://i.imgur.com/8QO9MkV.jpg"> <!-- Replace with your own Gold/Emerald pattern image URL -->
+  <meta property="og:image" content="https://i.imgur.com/8QO9MkV.jpg">
   <meta name="theme-color" content="#0B3B2E">
 
   <title>Madiha & Azan | Wedding Invitation</title>
   
-  <!-- Premium Fonts: Playfair Display (Names), Cormorant Garamond (Serif), Montserrat (Sans), Amiri (Arabic) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   
-  <!-- Vanilla Tilt (Modified to work seamlessly) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 
   <style>
-    /* ================= CSS VARIABLES & RESET ================= */
     :root {
       --emerald: #0B3B2E;
       --emerald-dark: #062119;
@@ -43,7 +39,7 @@
       display: flex; justify-content: center; align-items: center;
       min-height: 100vh;
       color: var(--text-dark);
-      perspective: 1500px; /* Crucial for 3D doors */
+      perspective: 1500px;
     }
 
     /* Floating Gold Dust Canvas */
@@ -80,7 +76,6 @@
     #left-door { transform-origin: left; border-right: 3px solid var(--gold-base); }
     #right-door { transform-origin: right; border-left: 3px solid var(--gold-base); }
     
-    /* 3D Door Open Effect */
     .door.open-left { transform: rotateY(-110deg); box-shadow: inset 0 0 100px rgba(0,0,0,1); }
     .door.open-right { transform: rotateY(110deg); box-shadow: inset 0 0 100px rgba(0,0,0,1); }
 
@@ -109,9 +104,9 @@
       color: var(--gold-light); letter-spacing: 4px; text-transform: uppercase;
     }
 
-    /* ================= MAIN 3D CARD (IVORY & GOLD) ================= */
+    /* ================= MAIN CARD ================= */
     .content-wrapper {
-      display: none; /* Shown right before doors open */
+      display: none;
       width: 100%; max-width: 420px; padding: 20px;
       perspective: 1200px; z-index: 2; position: relative;
     }
@@ -119,18 +114,17 @@
     .islamic-card {
       background: var(--ivory);
       border-radius: 12px;
-      padding: 30px 20px 40px;
+      padding: 35px 22px 40px;
       text-align: center;
       box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 40px rgba(201,162,75,0.1);
       position: relative;
-      /* FIX: Overflow visible is required for 3D elements to pop out */
-      overflow: visible; 
+      overflow: visible;
       transform-style: preserve-3d;
       border: 1px solid var(--gold-base);
       animation: floatingIdle 6s ease-in-out infinite alternate;
     }
 
-    /* Mihrab Arch Border (Inside Card) */
+    /* Mihrab Arch Border */
     .mihrab-frame {
       position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
       border: 1px solid rgba(201, 162, 75, 0.6);
@@ -147,27 +141,45 @@
     /* Personalized Greeting */
     #guest-greeting {
       font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
-      color: var(--emerald); margin-bottom: 15px; letter-spacing: 1px;
+      color: var(--emerald); margin-bottom: 10px; letter-spacing: 1px;
       text-transform: uppercase; transform: translateZ(30px);
-      display: none; /* Shown via JS */
-      background: rgba(201, 162, 75, 0.15); padding: 6px 12px; border-radius: 20px;
-      display: inline-block;
+      display: none;
+      background: rgba(201, 162, 75, 0.15); padding: 6px 14px; border-radius: 20px;
     }
 
-    /* Typography & 3D Elements */
+    /* FIXED ARABIC TYPOGRAPHY (NO OVERLAPPING) */
     .bismillah {
-      font-family: 'Amiri', serif; font-size: 26px; color: var(--emerald);
-      margin: 15px 0 10px; transform: translateZ(40px); font-weight: 700;
+      font-family: 'Amiri', serif; 
+      font-size: 26px; 
+      color: var(--emerald);
+      margin: 10px 0 15px; 
+      transform: translateZ(40px); 
+      font-weight: 700;
+      line-height: 1.8; /* Fixed height for Arabic Zer/Zabar */
+      direction: rtl;
     }
     
     .ayah {
-      font-family: 'Amiri', serif; font-size: 16px; color: var(--gold-dark);
-      margin-bottom: 20px; transform: translateZ(25px);
-      line-height: 1.6; padding: 0 15px;
+      font-family: 'Amiri', serif; 
+      font-size: 17px; 
+      color: var(--gold-dark);
+      margin-bottom: 15px; 
+      transform: translateZ(25px);
+      line-height: 2.2; /* Fixed overlap issue */
+      padding: 0 10px;
+      direction: rtl;
     }
+
     .ayah-meaning {
-      font-family: 'Montserrat', sans-serif; font-size: 9px; color: var(--text-muted);
-      margin-top: 5px; font-style: italic; letter-spacing: 0.5px;
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 9.5px; 
+      color: var(--text-muted);
+      margin-top: 12px; 
+      font-style: italic; 
+      letter-spacing: 0.5px;
+      line-height: 1.6;
+      direction: ltr;
+      display: block;
     }
 
     .invite-text {
@@ -176,7 +188,7 @@
       transform: translateZ(30px);
     }
 
-    /* Name Highlight (Gold Foil Effect) */
+    /* Name Highlight */
     .name-wrapper { transform: translateZ(60px); margin: 5px 0; }
     .name {
       font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 700;
@@ -184,13 +196,12 @@
       background-size: 200% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-      /* Slow shimmer to feel expensive, not cheap */
       animation: slowShimmer 8s linear infinite; 
     }
     
     .parents {
       font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--text-muted);
-      font-style: italic; transform: translateZ(35px); margin-bottom: 15px;
+      font-style: italic; transform: translateZ(35px); margin-bottom: 12px;
     }
     
     .weds {
@@ -200,7 +211,7 @@
 
     /* Date & Venue */
     .event-details {
-      transform: translateZ(40px); margin: 25px 0;
+      transform: translateZ(40px); margin: 22px 0;
       border-top: 1px solid var(--gold-base); border-bottom: 1px solid var(--gold-base);
       padding: 15px 0; position: relative; background: rgba(201, 162, 75, 0.05);
     }
@@ -229,9 +240,9 @@
     .cd-box span { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold-light); }
     .cd-box small { display: block; font-family: 'Montserrat', sans-serif; font-size: 8px; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; opacity: 0.8;}
 
-    /* Premium Scratch Card (Responsive Fixes) */
+    /* Scratch Card */
     .scratch-wrapper {
-      position: relative; width: min(280px, 100%); height: 90px; margin: 25px auto 10px;
+      position: relative; width: min(280px, 100%); height: 95px; margin: 25px auto 10px;
       border-radius: 8px; overflow: hidden; transform: translateZ(50px);
       border: 1px solid var(--gold-base); box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
@@ -240,11 +251,18 @@
       background: #fff; display: flex; flex-direction: column;
       justify-content: center; align-items: center; padding: 10px;
     }
-    .dua-arabic { font-family: 'Amiri', serif; color: var(--emerald); font-size: 18px; font-weight: 700; }
+    .dua-arabic { 
+      font-family: 'Amiri', serif; 
+      color: var(--emerald); 
+      font-size: 17px; 
+      font-weight: 700; 
+      line-height: 1.8;
+      direction: rtl;
+    }
     .dua-english { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 500; color: var(--text-muted); margin-top: 4px; }
     canvas#scratchCanvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: pointer; touch-action: none; }
 
-    /* Action Buttons */
+    /* Buttons */
     .actions { display: flex; justify-content: center; gap: 10px; margin-top: 20px; transform: translateZ(40px); flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
@@ -267,18 +285,14 @@
 </head>
 <body>
 
-  <!-- Floating Gold Dust -->
   <canvas id="sparkles-canvas"></canvas>
 
-  <!-- Background Nasheed (Updated filename & attributes) -->
   <audio id="bgMusic" loop preload="auto">
     <source src="wedding_nasheed.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Floating Sound Control -->
   <div id="sound-control" onclick="toggleMute()">🔊</div>
 
-  <!-- 3D MUGHAL DOORS (GATE) -->
   <div id="gate-container">
     <div id="left-door" class="door"></div>
     <div id="right-door" class="door"></div>
@@ -291,29 +305,24 @@
     <div class="seal-text">Tap to Open</div>
   </div>
 
-  <!-- MAIN IVORY & GOLD CARD -->
   <div class="content-wrapper" id="main-content">
     <div class="islamic-card" id="tilt-card">
       
-      <!-- Mihrab Architectural Border -->
       <div class="mihrab-frame"></div>
 
-      <!-- Personalized Guest Greeting (Injected via JS) -->
       <div id="guest-greeting-container" class="fade-up" style="animation-delay: 0.2s;">
         <span id="guest-greeting">Welcome</span>
       </div>
 
-      <!-- Authentic Bismillah & Ayah -->
-      <div class="bismillah fade-up" style="animation-delay: 0.4s;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+      <div class="bismillah fade-up" style="animation-delay: 0.4s;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
       
       <div class="ayah fade-up" style="animation-delay: 0.6s;">
         وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
-        <div class="ayah-meaning">"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy." (30:21)</div>
+        <span class="ayah-meaning">"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy." (30:21)</span>
       </div>
 
       <div class="invite-text fade-up" style="animation-delay: 0.8s;">We Request The Honour Of Your Presence</div>
       
-      <!-- Groom & Bride Details -->
       <div class="name-wrapper fade-up" style="animation-delay: 1.0s;">
         <div class="name">Madiha</div>
       </div>
@@ -326,14 +335,12 @@
       </div>
       <div class="parents fade-up" style="animation-delay: 1.4s;">S/o Mr. & Mrs. Javed Shaikh</div>
 
-      <!-- Event Details -->
       <div class="event-details fade-up" style="animation-delay: 1.5s;">
         <div class="date-main">12th November, 2026</div>
         <div class="date-sub">Thursday (Jumerat) • Aqd: Asr (5:00 PM)</div>
         <div class="venue">Venue: Hamidiya Function Hall</div>
       </div>
 
-      <!-- Countdown -->
       <div class="countdown-container fade-up" style="animation-delay: 1.6s;">
         <div class="cd-box"><span id="days">00</span><small>Days</small></div>
         <div class="cd-box"><span id="hours">00</span><small>Hours</small></div>
@@ -341,7 +348,6 @@
         <div class="cd-box"><span id="secs">00</span><small>Secs</small></div>
       </div>
 
-      <!-- Authentic Scratch Dua -->
       <div class="scratch-wrapper fade-up" style="animation-delay: 1.7s;">
         <div class="dua-secret">
           <div class="dua-arabic">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
@@ -350,7 +356,6 @@
         <canvas id="scratchCanvas"></canvas>
       </div>
 
-      <!-- Action Buttons -->
       <div class="actions fade-up" style="animation-delay: 1.8s;">
         <a href="https://maps.app.goo.gl/FaJvCyufFj4SQwsj6?g_st=ac" target="_blank" class="btn">📍 MAP</a>
         <a href="#" id="rsvp-btn" target="_blank" class="btn outline">💬 RSVP</a>
@@ -361,8 +366,10 @@
   </div>
 
   <script>
+    // ⚠️ APNA WHATSAPP NUMBER YAHAN UPDATE KAREIN (Ex: 919876543210)
+    const MY_WHATSAPP_NUMBER = "919876543210"; 
+
     // 1. Personalized URL Greeting & RSVP setup
-    // Example: index.html?to=Rahim+Bhai+%26+Family
     const urlParams = new URLSearchParams(window.location.search);
     const guestName = urlParams.get('to');
     
@@ -371,15 +378,14 @@
       greetingEl.textContent = `Aapko dil se daawat hai, ${guestName}`;
       greetingEl.style.display = 'inline-block';
       
-      // Update RSVP message
       const rsvpText = encodeURIComponent(`Assalamu Alaikum. ${guestName} ki taraf se Mubarakbaad! InshaAllah hum zaroor shamil honge.`);
-      document.getElementById('rsvp-btn').href = `https://wa.me/910000000000?text=${rsvpText}`; // Replace 910000000000 with your number
+      document.getElementById('rsvp-btn').href = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${rsvpText}`;
     } else {
       document.getElementById('guest-greeting-container').style.display = 'none';
-      document.getElementById('rsvp-btn').href = `https://wa.me/910000000000?text=Assalamu+Alaikum.+Mubarakbaad!`;
+      document.getElementById('rsvp-btn').href = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=Assalamu+Alaikum.+Mubarakbaad!`;
     }
 
-    // 2. Gold Dust Particle System (Luxury replacement for confetti)
+    // 2. Gold Dust Particles Canvas
     const pCanvas = document.getElementById('sparkles-canvas');
     const pCtx = pCanvas.getContext('2d');
     let particles = [];
@@ -408,7 +414,7 @@
     }
     drawSparkles();
 
-    // 3. Audio Control & Autoplay fixes
+    // 3. Audio Control
     let isMuted = false;
     const music = document.getElementById('bgMusic');
     const soundBtn = document.getElementById('sound-control');
@@ -425,7 +431,7 @@
             if (vol < 0.4) { vol += 0.05; music.volume = vol; }
             else { clearInterval(fade); }
           }, 200);
-        }).catch(e => console.log("Autoplay blocked, user needs to click again."));
+        }).catch(e => console.log("Audio playback waiting for interaction"));
       }
     }
 
@@ -434,7 +440,6 @@
       else { music.volume = 0; soundBtn.innerText = '🔇'; isMuted = true; }
     }
 
-    // Resume audio on visibility change (Fixes tab switch bug)
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) { music.pause(); } 
       else if (!isMuted) { music.play(); }
@@ -446,15 +451,12 @@
       if(isOpened) return; isOpened = true;
       playAudioFadeIn();
 
-      // Show content behind before doors open
       document.getElementById('main-content').style.display = 'block';
       
-      // Hide Seal
       const seal = document.getElementById('seal-btn');
       seal.style.transform = 'translate(-50%, -50%) scale(1.5)';
       seal.style.opacity = '0';
       
-      // Open Doors 3D
       document.getElementById('left-door').classList.add('open-left');
       document.getElementById('right-door').classList.add('open-right');
 
@@ -462,21 +464,19 @@
         seal.style.display = 'none';
         document.getElementById('gate-container').style.display = 'none';
         
-        // Initialize VanillaTilt with proper 3D & Gyroscope settings
         if (typeof VanillaTilt !== 'undefined') {
           VanillaTilt.init(document.querySelector("#tilt-card"), {
-            max: 8, speed: 600, glare: true, "max-glare": 0.15, gyroscope: true
+            max: 8, speed: 600, glare: true, "max-glare": 0.15, gyroscope: false
           });
         }
         
         setupScratchCard();
         startCountdown();
-      }, 2500); // Wait for door animation to finish
+      }, 2500);
     }
 
-    // 5. Timezone Safe Countdown
+    // 5. Countdown Watch
     function startCountdown() {
-      // ISO format with explicit timezone (IST = +05:30)
       const weddingDate = new Date("2026-11-12T17:00:00+05:30").getTime();
       const timer = setInterval(() => {
         const now = new Date().getTime();
@@ -494,7 +494,7 @@
       }, 1000);
     }
 
-    // 6. Responsive High-Def Scratch Card Fix
+    // 6. Scratch Card Setup
     function setupScratchCard() {
       const wrapper = document.querySelector('.scratch-wrapper');
       const canvas = document.getElementById('scratchCanvas');
@@ -504,20 +504,17 @@
       const rect = wrapper.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       
-      // Fix blurry canvas on retina displays
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       canvas.style.width = `${rect.width}px`;
       canvas.style.height = `${rect.height}px`;
       ctx.scale(dpr, dpr);
 
-      // Gold Foil Cover
       let gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
       gradient.addColorStop(0, '#C9A24B'); gradient.addColorStop(0.5, '#F3E5CF'); gradient.addColorStop(1, '#8A6A1F');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, rect.width, rect.height);
 
-      // Overlay Text
       ctx.fillStyle = '#062119';
       ctx.font = '600 12px Montserrat';
       ctx.textAlign = 'center';
@@ -555,11 +552,10 @@
         ctx.stroke();
         
         lastX = pos.x; lastY = pos.y;
-        pixelsCleared += 100; // Rough estimation for performance
+        pixelsCleared += 100;
       }
 
       function checkReveal() {
-        // Auto reveal after ~50% scratched
         if (pixelsCleared > totalPixels * 0.5) {
           canvas.style.transition = "opacity 0.8s";
           canvas.style.opacity = "0";
@@ -575,7 +571,7 @@
       canvas.addEventListener('touchmove', scratch, {passive: false});
     }
 
-    // 7. Add to Calendar logic
+    // 7. Add to Calendar
     function downloadICS() {
       const icsMSG = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:20261112T113000Z\nDTEND:20261112T163000Z\nSUMMARY:Madiha & Azan Wedding (Aqd)\nDESCRIPTION:Join us for the wedding ceremony of Madiha and Azan.\nLOCATION:Hamidiya Function Hall\nEND:VEVENT\nEND:VCALENDAR`;
       const blob = new Blob([icsMSG], { type: 'text/calendar;charset=utf-8' });
@@ -587,4 +583,3 @@
   </script>
 </body>
 </html>
-
