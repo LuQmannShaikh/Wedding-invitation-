@@ -62,103 +62,84 @@
     /* ================= 3D MUGHAL DOORS (GATE) ================= */
         /* ================= 3D ROYAL VELVET DOORS (PREMIUM UPGRADE) ================= */
         /* ================= 3D SHAHI MAROON DOORS WITH REALISTIC ROSES ================= */
+        /* ================= ASLI 3D VELVET PARDA (REALISTIC CURTAIN) ================= */
     #gate-container {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9000;
-      display: flex; pointer-events: none; transform-style: preserve-3d;
-      perspective: 1200px;
+      display: flex; pointer-events: none; overflow: hidden; /* Side scroll rokne ke liye */
     }
     
     .door {
       width: 50%; height: 100%; position: relative; pointer-events: auto;
-      /* Deep Royal Maroon Velvet Gradient (Shaadi Theme) */
-      background: linear-gradient(135deg, #1f0105 0%, #4a020f 40%, #4a020f 60%, #1f0105 100%);
-      transition: transform 2.5s cubic-bezier(0.64, 0, 0.07, 1), box-shadow 2.5s ease;
-      box-shadow: inset 0 0 80px rgba(0,0,0,0.95);
-      overflow: hidden;
+      background-color: #4a020f; /* Shahi Maroon Base */
+      
+      /* Kapde ki Salvatein (3D Fabric Folds Effect) */
+      background-image: linear-gradient(
+        to right,
+        rgba(0,0,0,0.7) 0%,
+        rgba(255,255,255,0.05) 20%,
+        rgba(0,0,0,0.4) 40%,
+        rgba(255,255,255,0.1) 60%,
+        rgba(0,0,0,0.7) 80%,
+        rgba(0,0,0,0.2) 100%
+      );
+      background-size: 25% 100%; /* Har parde par 4 salvatein banayega */
+      
+      /* Parda sarkane ka smooth animation */
+      transition: transform 2.5s ease-in-out, filter 2.5s ease;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+      z-index: 2;
     }
 
-    /* Subtle Royal Pattern Overlay */
-    .door::after {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="%23C9A24B" fill-opacity="0.08"><path d="M20 0L40 20L20 40L0 20L20 0zM20 4L4 20L20 36L36 20L20 4z"/></g></svg>') repeat;
-      mix-blend-mode: color-dodge; pointer-events: none; z-index: 1;
-    }
-
-    /* ================= REALISTIC ROSES (Top Corners) ================= */
-    /* Left Door Rose */
-    #left-door::before {
-      content: ''; position: absolute; top: -10px; left: -10px; width: 280px; height: 280px;
-      /* Transparent Realistic Red Rose PNG */
-      background: url('https://pngimg.com/uploads/rose/rose_PNG64249.png') no-repeat top left;
-      background-size: contain; 
-      filter: drop-shadow(8px 15px 15px rgba(0,0,0,0.8)); /* 3D Shadow Effect */
-      pointer-events: none; z-index: 3; transform: rotate(-10deg);
-    }
+    /* Parde kahan jama honge (Anchor points) */
+    #left-door { transform-origin: left top; border-right: 4px solid #C9A24B; }
+    #right-door { transform-origin: right top; border-left: 4px solid #C9A24B; }
     
-    /* Right Door Rose */
-    #right-door::before {
-      content: ''; position: absolute; top: -10px; right: -10px; width: 280px; height: 280px;
-      /* Same Rose, flipped for symmetry */
-      background: url('https://pngimg.com/uploads/rose/rose_PNG64249.png') no-repeat top right;
-      background-size: contain; 
-      filter: drop-shadow(-8px 15px 15px rgba(0,0,0,0.8)); /* 3D Shadow Effect */
-      pointer-events: none; z-index: 3; transform: scaleX(-1) rotate(-10deg);
+    /* ================= PARDA SARKANE KA EFFECT (SQUISH & SLIDE) ================= */
+    .door.open-left { 
+      transform: scaleX(0.15); /* Parda left mein jama ho jayega */
+      filter: drop-shadow(15px 0 20px rgba(0,0,0,1)); 
+    }
+    .door.open-right { 
+      transform: scaleX(0.15); /* Parda right mein jama ho jayega */
+      filter: drop-shadow(-15px 0 20px rgba(0,0,0,1)); 
     }
 
-    /* Premium Heavy Gold Borders */
-    #left-door { 
-      transform-origin: left; 
-      border-right: 5px solid #C9A24B;
-      box-shadow: inset -15px 0 40px rgba(0,0,0,0.7), inset 0 0 100px rgba(0,0,0,0.8);
-    }
-    #right-door { 
-      transform-origin: right; 
-      border-left: 5px solid #C9A24B;
-      box-shadow: inset 15px 0 40px rgba(0,0,0,0.7), inset 0 0 100px rgba(0,0,0,0.8);
-    }
-    
-    /* Glowing Inner Royal Frame */
-    #left-door .frame-inner, #right-door .frame-inner {
-      content: ''; position: absolute; top: 20px; bottom: 20px; width: calc(100% - 40px);
-      border: 1px solid rgba(201, 162, 75, 0.3); pointer-events: none; z-index: 2;
-    }
-    #left-door .frame-inner { left: 20px; border-right: none; }
-    #right-door .frame-inner { right: 20px; border-left: none; }
-    
-    /* Open State Shadows */
-    .door.open-left { transform: rotateY(-110deg); box-shadow: inset 0 0 150px rgba(0,0,0,1); }
-    .door.open-right { transform: rotateY(110deg); box-shadow: inset 0 0 150px rgba(0,0,0,1); }
-
-    /* Premium Gold Medallion (Seal) */
+    /* ================= PREMIUM GOLD MEDALLION ================= */
     #seal-btn {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
       z-index: 9500; cursor: pointer; pointer-events: auto;
       transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+    
     .seal-circle {
       width: 130px; height: 130px; border-radius: 50%;
-      /* 3D Metallic Gold Effect */
       background: conic-gradient(from 0deg, #C9A24B, #FFF5D1, #8A6A1F, #C9A24B, #FFF5D1, #8A6A1F, #C9A24B);
       display: flex; justify-content: center; align-items: center;
       box-shadow: 0 0 40px rgba(201, 162, 75, 0.5), inset 0 0 20px rgba(138,106,31,0.9);
-      border: 6px solid #2a0005; /* Maroon Border */
+      border: 6px solid #2a0005;
       animation: premiumGlow 2s infinite alternate;
       position: relative;
     }
-    /* Inner Ring */
+    
     .seal-circle::before {
       content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
       border-radius: 50%; border: 1px dashed rgba(42, 0, 5, 0.5);
     }
+    
     .seal-monogram {
       font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 800;
       color: #2a0005; letter-spacing: 2px;
       text-shadow: 1px 1px 0px rgba(255,255,255,0.8), -1px -1px 0px rgba(138,106,31,0.5);
-      position: relative; z-index: 2;
     }
+
+    /* ================= TAP TO OPEN TEXT FIX ================= */
     .seal-text {
-      position: absolute; bottom: -35px; width: 100%; text-align: center;
-      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+      position: absolute; bottom: -45px;
+      left: 50%; transform: translateX(-50%);
+      width: 250px; /* Text ko jagah dene ke liye */
+      text-align: center;
+      white-space: nowrap; /* YEH LINE TEXT KO EK HI LINE MEIN RAKHEGI */
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
       color: #F3E5CF; letter-spacing: 5px; text-transform: uppercase;
       text-shadow: 0 2px 5px rgba(0,0,0,0.9);
     }
