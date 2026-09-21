@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Madiha & Azan - Wedding Invitation</title>
+  <title>Madiha & Azan - Islamic Wedding Invitation</title>
   
-  <!-- Premium Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Amiri:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Premium Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Amiri:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <!-- 3D Tilt Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
@@ -15,120 +15,160 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
-      background: #0f1c15 url('https://www.transparenttextures.com/patterns/arabesque.png');
+      background: #0a1710 url('https://www.transparenttextures.com/patterns/arabesque.png');
       font-family: 'Montserrat', sans-serif;
-      color: #1a3322;
       overflow-x: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      color: #1a3322;
     }
 
-    /* ---------------- 1. LIVE CURTAINS & SEAL ---------------- */
+    /* ---------------- 1. REAL 3D VELVET CURTAINS ---------------- */
     #curtain-container {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;
       display: flex; overflow: hidden; pointer-events: none;
     }
+    
+    /* 3D Folds using complex gradients */
     .curtain {
       width: 50%; height: 100%;
-      background: linear-gradient(135deg, #0e2417 0%, #153a25 100%);
-      box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+      background-image: 
+        url('https://www.transparenttextures.com/patterns/stardust.png'),
+        linear-gradient(90deg, #052617 0%, #0e4c30 20%, #052617 40%, #115c3a 60%, #052617 80%, #0e4c30 100%);
       position: relative;
-      transition: transform 2s cubic-bezier(0.77, 0, 0.175, 1);
-      border-left: 2px solid #d4af37; border-right: 2px solid #d4af37;
-    }
-    #left-curtain::after {
-      content: ''; position: absolute; right: 0; top: 0; height: 100%; width: 20px;
-      background: linear-gradient(to left, rgba(0,0,0,0.5), transparent);
-    }
-    #right-curtain::before {
-      content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 20px;
-      background: linear-gradient(to right, rgba(0,0,0,0.5), transparent);
+      transition: transform 2.5s cubic-bezier(0.65, 0, 0.076, 1);
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+      z-index: 10;
     }
     
-    .curtain.open-left { transform: translateX(-100%); }
-    .curtain.open-right { transform: translateX(100%); }
+    #left-curtain { border-right: 6px solid #d4af37; box-shadow: 10px 0 30px rgba(0,0,0,0.7); }
+    #right-curtain { border-left: 6px solid #d4af37; box-shadow: -10px 0 30px rgba(0,0,0,0.7); }
+    
+    .curtain.open-left { transform: translateX(-110%) scaleX(0.8); }
+    .curtain.open-right { transform: translateX(110%) scaleX(0.8); }
 
+    /* Glowing Mandala Seal */
     #tap-seal {
       position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
       z-index: 10000; cursor: pointer; text-align: center;
-      transition: opacity 1s ease-in-out;
+      transition: all 1s ease-in-out;
     }
-    .seal-circle {
-      width: 140px; height: 140px; background: #d4af37;
-      border-radius: 50%; display: flex; justify-content: center; align-items: center;
-      border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      animation: pulse 2s infinite; pointer-events: auto;
+    .mandala-bg {
+      width: 160px; height: 160px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Islamic_star_pattern.svg/1024px-Islamic_star_pattern.svg.png') center/cover;
+      border-radius: 50%; border: 4px solid #d4af37;
+      display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 0 30px #d4af37, inset 0 0 20px rgba(0,0,0,0.8);
+      animation: slowSpin 15s linear infinite;
+      position: absolute; top: 0; left: 0;
     }
-    .seal-text { font-family: 'Cinzel', serif; font-size: 14px; color: #0e2417; font-weight: bold; }
+    .seal-content {
+      position: relative; z-index: 2; width: 120px; height: 120px;
+      background: radial-gradient(circle, #f3e5ab 0%, #d4af37 100%);
+      border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5); border: 2px solid #fff;
+      animation: pulse 2s infinite;
+      margin: 20px;
+    }
+    .seal-content span { font-family: 'Cinzel Decorative', serif; font-size: 14px; font-weight: bold; color: #052617; }
 
-    /* ---------------- 2. MAIN 3D WEDDING CARD ---------------- */
-    .card-wrapper { display: none; padding: 20px; width: 100%; max-width: 420px; perspective: 1000px; }
+    /* ---------------- 2. PREMIUM ISLAMIC CARD ---------------- */
+    .card-wrapper { display: none; padding: 20px; width: 100%; max-width: 450px; perspective: 1000px; margin-top: 20px; }
     
     .islamic-card {
-      background: #fdfaf3 url('https://www.transparenttextures.com/patterns/cream-paper.png');
-      border-radius: 15px; padding: 30px 20px; text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      background: #fdfcf8 url('https://www.transparenttextures.com/patterns/rice-paper.png');
+      border-radius: 12px; padding: 40px 20px; text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.7);
       position: relative; overflow: hidden;
-      /* Teal & Gold Islamic Border */
-      border: 6px solid #4a8275; outline: 2px solid #d4af37; outline-offset: -12px;
-      transform-style: preserve-3d; /* For 3D elements inside */
+      border: 2px solid #d4af37;
+      transform-style: preserve-3d;
     }
 
-    /* Bismillah Calligraphy (CSS based for elegance) */
-    .bismillah { font-family: 'Amiri', serif; font-size: 32px; color: #4a8275; margin-bottom: 15px; transform: translateZ(30px); }
-    
-    .heading { font-family: 'Cinzel', serif; color: #d4af37; font-size: 14px; letter-spacing: 2px; margin-bottom: 20px; transform: translateZ(20px); }
-    
-    .names { font-family: 'Great Vibes', cursive; font-size: 45px; color: #0e2417; line-height: 1.2; transform: translateZ(40px); }
-    .names span { display: block; font-size: 30px; color: #d4af37; font-family: 'Cinzel', serif; margin: 5px 0; }
-    
-    .details { font-family: 'Montserrat', sans-serif; font-size: 13px; color: #333; margin: 25px 0; line-height: 1.6; transform: translateZ(20px); }
-    .date-highlight { font-family: 'Cinzel', serif; font-size: 18px; color: #4a8275; font-weight: bold; margin: 10px 0; }
+    /* Double Border Effect */
+    .islamic-card::before {
+      content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+      border: 1px solid #4a8275; border-radius: 8px; pointer-events: none;
+    }
 
-    /* ---------------- 3. AWESOME SCRATCH CARD ---------------- */
+    /* Hanging Lanterns (Fanoos) */
+    .lantern {
+      position: absolute; top: -10px; width: 40px;
+      animation: swing 4s ease-in-out infinite alternate;
+      transform-origin: top center;
+    }
+    .lantern.left { left: 20px; }
+    .lantern.right { right: 20px; animation-delay: 1s; }
+
+    /* Typography */
+    .bismillah { font-family: 'Amiri', serif; font-size: 34px; color: #0a3d28; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); transform: translateZ(30px); }
+    
+    .invite-line { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #666; margin-bottom: 25px; transform: translateZ(20px); }
+    
+    .name { font-family: 'Great Vibes', cursive; font-size: 55px; color: #052617; line-height: 0.9; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); transform: translateZ(50px); margin-top: 10px; }
+    
+    .parents { font-size: 11px; font-weight: 500; color: #4a8275; margin-bottom: 15px; font-style: italic; transform: translateZ(30px); }
+    
+    .weds { font-family: 'Cinzel Decorative', serif; font-size: 18px; color: #d4af37; margin: 10px 0; transform: translateZ(20px); }
+    
+    .details { font-size: 13px; color: #333; margin: 25px 0; line-height: 1.8; transform: translateZ(25px); }
+    
+    .date-highlight { 
+      font-family: 'Cinzel Decorative', serif; font-size: 20px; color: #0a3d28; 
+      font-weight: bold; margin: 15px 0; padding: 10px; border-top: 1px solid #d4af37; border-bottom: 1px solid #d4af37;
+    }
+
+    /* ---------------- 3. SCRATCH CARD ---------------- */
     .scratch-wrapper {
-      position: relative; width: 280px; height: 100px; margin: 25px auto;
-      border-radius: 10px; overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: translateZ(30px);
+      position: relative; width: 290px; height: 90px; margin: 25px auto;
+      border-radius: 8px; overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2); transform: translateZ(40px);
+      border: 1px solid #d4af37;
     }
     .dua-secret {
       position: absolute; width: 100%; height: 100%; top: 0; left: 0;
       background: #eef5f2; display: flex; flex-direction: column;
       justify-content: center; align-items: center; padding: 10px;
-      font-family: 'Amiri', serif; color: #0e2417; font-size: 16px; font-weight: bold;
+      font-family: 'Amiri', serif; color: #052617; font-size: 18px; font-weight: bold;
     }
-    .dua-secret p { font-size: 12px; font-family: 'Montserrat', sans-serif; font-weight: normal; margin-top: 5px; color: #4a8275;}
+    .dua-secret p { font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 500; margin-top: 5px; color: #4a8275;}
     canvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: pointer; touch-action: none; }
 
     /* ---------------- 4. BUTTONS & UI ---------------- */
     .btn {
-      display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #b8952d 100%);
-      color: #fff; padding: 12px 25px; border-radius: 25px; text-decoration: none;
-      font-size: 13px; font-family: 'Cinzel', serif; font-weight: bold; margin-top: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2); transform: translateZ(25px);
+      display: inline-block; background: linear-gradient(135deg, #0a3d28 0%, #115c3a 100%);
+      color: #fff; padding: 14px 30px; border-radius: 30px; text-decoration: none;
+      font-size: 12px; font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 1px;
+      box-shadow: 0 10px 20px rgba(10, 61, 40, 0.4); transform: translateZ(30px);
+      border: 1px solid #d4af37; transition: all 0.3s ease; margin-top: 10px;
     }
+    .btn:active { transform: scale(0.95) translateZ(30px); }
+
+    /* Animations */
+    @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 15px #d4af37; } 50% { transform: scale(1.05); box-shadow: 0 0 30px #f3e5ab; } 100% { transform: scale(1); box-shadow: 0 0 15px #d4af37; } }
+    @keyframes slowSpin { 100% { transform: rotate(360deg); } }
+    @keyframes swing { 0% { transform: rotate(-5deg); } 100% { transform: rotate(5deg); } }
     
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
   </style>
 </head>
 <body>
 
-  <!-- Background Islamic Oud Music -->
+  <!-- Beautiful Soothing Islamic Nasheed (No Instruments) -->
   <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_10e0517e43.mp3?filename=arabic-oud-123497.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2023/07/26/audio_985bb5e6cd.mp3?filename=beautiful-islamic-nasheed-160166.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Curtains & Tap to Open Seal -->
+  <!-- 3D Velvet Curtains & Tap Seal -->
   <div id="curtain-container">
     <div id="left-curtain" class="curtain"></div>
     <div id="right-curtain" class="curtain"></div>
   </div>
 
   <div id="tap-seal" onclick="startExperience()">
-    <div class="seal-circle">
-      <span class="seal-text">TAP TO<br>OPEN</span>
+    <div class="mandala-bg"></div>
+    <div class="seal-content">
+      <span>TAP TO<br>OPEN</span>
     </div>
   </div>
 
@@ -136,20 +176,28 @@
   <div class="card-wrapper" id="main-content">
     <div class="islamic-card" id="tilt-card">
       
+      <!-- CSS SVG Lanterns -->
+      <img src="https://www.svgrepo.com/show/330836/lantern.svg" class="lantern left" style="filter: invert(62%) sepia(51%) saturate(614%) hue-rotate(5deg) brightness(97%) contrast(89%);">
+      <img src="https://www.svgrepo.com/show/330836/lantern.svg" class="lantern right" style="filter: invert(62%) sepia(51%) saturate(614%) hue-rotate(5deg) brightness(97%) contrast(89%);">
+      
       <div class="bismillah">بسم الله الرحمن الرحيم</div>
       
-      <div class="heading">WEDDING INVITATION</div>
+      <div class="invite-line">We Request The Honour Of Your Presence</div>
       
-      <div class="names">
-        Madiha
-        <span>WEDS</span>
-        Azan
-      </div>
+      <!-- Bride Info -->
+      <div class="name">Madiha</div>
+      <div class="parents">D/o Mr. & Mrs. A. Basit Shaikh</div>
+      
+      <div class="weds">Weds</div>
+      
+      <!-- Groom Info -->
+      <div class="name">Azan</div>
+      <div class="parents">S/o Mr. & Mrs. Javed Shaikh</div>
 
       <div class="details">
-        We request the honour of your presence and blessings on the auspicious occasion of the wedding ceremony.
-        <div class="date-highlight">12 November, 2026</div>
-        Aqd (Nikah) - 7 PM Onwards
+        To share our joy and celebrate our wedding ceremony on the auspicious day of
+        <div class="date-highlight">12 NOVEMBER, 2026</div>
+        <b>Aqd (Nikah) - 7:00 PM Onwards</b>
       </div>
 
       <!-- Scratch Card Feature -->
@@ -158,75 +206,76 @@
           بارك الله لكما وبارك عليكما
           <p>May Allah bless you both with endless love.</p>
         </div>
-        <canvas id="scratchCanvas" width="280" height="100"></canvas>
+        <canvas id="scratchCanvas" width="290" height="90"></canvas>
       </div>
 
-      <div class="details" style="margin-top: 15px; font-size: 12px;">
+      <div class="details" style="font-size: 12px; margin-top: 15px;">
         <b>VENUE</b><br>
-        Qadri Function Hall, Jalkot Road,<br>Udgir, Dist. Latur, MH
+        <span style="color: #4a8275; font-size: 14px; font-weight: 600;">Hamidiya Function Hall</span><br>
+        (Click below for exact location)
       </div>
 
-      <a href="https://maps.google.com/?q=Qadri+Function+Hall+Udgir" target="_blank" class="btn">📍 Get Directions</a>
+      <!-- Updated Exact Google Maps Link -->
+      <a href="https://maps.app.goo.gl/FaJvCyufFj4SQwsj6?g_st=ac" target="_blank" class="btn">📍 OPEN IN MAPS</a>
 
     </div>
   </div>
 
   <script>
-    // --- 1. Curtain & Music Logic ---
+    // --- 1. Realistic Curtain & Music Logic ---
     function startExperience() {
-      // Hide the seal
+      document.getElementById('tap-seal').style.transform = 'translate(-50%, -50%) scale(2)';
       document.getElementById('tap-seal').style.opacity = '0';
-      setTimeout(() => { document.getElementById('tap-seal').style.display = 'none'; }, 1000);
+      setTimeout(() => { document.getElementById('tap-seal').style.display = 'none'; }, 800);
 
       // Slide Curtains
       document.getElementById('left-curtain').classList.add('open-left');
       document.getElementById('right-curtain').classList.add('open-right');
 
-      // Play Music
+      // Play Islamic Nasheed Music
       const music = document.getElementById('bgMusic');
-      music.volume = 0.6; // Soothing volume
-      music.play();
+      music.volume = 0.8; 
+      music.play().catch(e => console.log("Audio play prevented by browser"));
 
-      // Show Main Card & Initialize 3D Tilt
+      // Show Main Card
       setTimeout(() => {
         document.getElementById('curtain-container').style.display = 'none';
         const cardWrapper = document.getElementById('main-content');
         cardWrapper.style.display = 'block';
         
-        // Initialize 3D effect after card is visible
+        // Initialize 3D Tilt for mobile
         VanillaTilt.init(document.querySelector("#tilt-card"), {
-          max: 15,          // Maximum tilt rotation (degrees)
-          speed: 400,       // Speed of the enter/exit transition
-          glare: true,      // Add a lighting glare effect
-          "max-glare": 0.4, // Max glare opacity
-          gyroscope: true   // Works with mobile tilt sensor!
+          max: 12,          
+          speed: 400,       
+          glare: true,      
+          "max-glare": 0.3, 
+          gyroscope: true   
         });
 
-        // Setup Scratch Canvas size correctly after display:block
+        // Init Scratch Canvas
         setupScratchCard();
       }, 1500);
     }
 
-    // --- 2. Enhanced Awesome Scratch Card Logic ---
+    // --- 2. Awesome Foil Scratch Card Logic ---
     function setupScratchCard() {
       const canvas = document.getElementById('scratchCanvas');
       const ctx = canvas.getContext('2d');
       
-      // Draw Gold Scratch Cover
+      // Draw Gold Foil Pattern for Cover
       let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, '#d4af37');
-      gradient.addColorStop(0.5, '#f3e5ab');
-      gradient.addColorStop(1, '#d4af37');
+      gradient.addColorStop(0, '#c5a059');
+      gradient.addColorStop(0.5, '#fdfcf8');
+      gradient.addColorStop(1, '#c5a059');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Add Text on Cover
-      ctx.fillStyle = '#0e2417';
-      ctx.font = 'bold 15px Montserrat';
+      // Add elegant text
+      ctx.fillStyle = '#052617';
+      ctx.font = '600 14px Montserrat';
       ctx.textAlign = 'center';
-      ctx.fillText('✨ Scratch For A Surprise ✨', canvas.width/2, 55);
+      ctx.fillText('✨ Scratch For A Special Dua ✨', canvas.width/2, 50);
 
-      // Scratching Mechanism
       let isDragging = false;
       function scratch(e) {
         if (!isDragging) return;
@@ -238,8 +287,7 @@
         
         ctx.globalCompositeOperation = 'destination-out';
         ctx.beginPath();
-        // Slightly glowing/fuzzy brush for awesome reveal effect
-        ctx.arc(x, y, 20, 0, Math.PI * 2);
+        ctx.arc(x, y, 22, 0, Math.PI * 2);
         ctx.fill();
       }
 
