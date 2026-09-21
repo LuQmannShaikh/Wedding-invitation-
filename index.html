@@ -1,11 +1,11 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Madiha & Azan - Islamic Wedding Invitation</title>
+  <title>Madiha & Azan - Wedding Invitation</title>
   
-  <!-- Premium Google Fonts -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Amiri:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <!-- 3D Tilt Library -->
@@ -15,7 +15,7 @@ DOCTYPE html>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
-      background: #0a1710 url('https://www.transparenttextures.com/patterns/arabesque.png');
+      background: #08140e url('https://www.transparenttextures.com/patterns/arabesque.png');
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
       display: flex;
@@ -25,7 +25,7 @@ DOCTYPE html>
       color: #1a3322;
     }
 
-    /* 1. REAL 3D VELVET CURTAINS */
+    /* ---------------- REALISTIC 3D VELVET CURTAINS ---------------- */
     #curtain-container {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;
       display: flex; overflow: hidden; pointer-events: none;
@@ -34,51 +34,48 @@ DOCTYPE html>
     .curtain {
       width: 50%; height: 100%;
       background-image: 
-        url('https://www.transparenttextures.com/patterns/stardust.png'),
-        linear-gradient(90deg, #052617 0%, #0e4c30 20%, #052617 40%, #115c3a 60%, #052617 80%, #0e4c30 100%);
+        radial-gradient(circle, rgba(212,175,55,0.15) 10%, transparent 20%),
+        linear-gradient(90deg, #052214 0%, #0e4c2e 25%, #041c10 50%, #115c38 75%, #052214 100%);
+      background-size: 40px 40px, 100% 100%;
       position: relative;
-      transition: transform 2.5s cubic-bezier(0.65, 0, 0.076, 1);
-      box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+      transition: transform 2.5s cubic-bezier(0.77, 0, 0.175, 1);
+      box-shadow: inset 0 0 60px rgba(0,0,0,0.9);
       z-index: 10;
     }
     
-    #left-curtain { border-right: 6px solid #d4af37; box-shadow: 10px 0 30px rgba(0,0,0,0.7); }
-    #right-curtain { border-left: 6px solid #d4af37; box-shadow: -10px 0 30px rgba(0,0,0,0.7); }
+    #left-curtain { 
+      border-right: 6px solid #d4af37; 
+      box-shadow: 15px 0 40px rgba(0,0,0,0.8), inset -20px 0 30px rgba(0,0,0,0.5); 
+    }
+    #right-curtain { 
+      border-left: 6px solid #d4af37; 
+      box-shadow: -15px 0 40px rgba(0,0,0,0.8), inset 20px 0 30px rgba(0,0,0,0.5); 
+    }
     
-    .curtain.open-left { transform: translateX(-110%) scaleX(0.8); }
-    .curtain.open-right { transform: translateX(110%) scaleX(0.8); }
+    .curtain.open-left { transform: translateX(-110%) scaleX(0.9); }
+    .curtain.open-right { transform: translateX(110%) scaleX(0.9); }
 
-    /* MANDALA SEAL */
+    /* ROYAL OPEN SEAL */
     #tap-seal {
       position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
       z-index: 10000; cursor: pointer; text-align: center;
-      transition: all 1s ease-in-out;
+      transition: all 0.8s ease-in-out;
     }
-    .mandala-bg {
-      width: 160px; height: 160px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Islamic_star_pattern.svg/1024px-Islamic_star_pattern.svg.png') center/cover;
-      border-radius: 50%; border: 4px solid #d4af37;
-      display: flex; justify-content: center; align-items: center;
-      box-shadow: 0 0 30px #d4af37, inset 0 0 20px rgba(0,0,0,0.8);
-      animation: slowSpin 15s linear infinite;
-      position: absolute; top: 0; left: 0;
-    }
-    .seal-content {
-      position: relative; z-index: 2; width: 120px; height: 120px;
-      background: radial-gradient(circle, #f3e5ab 0%, #d4af37 100%);
+    .seal-ring {
+      width: 130px; height: 130px;
+      background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #b8952d 100%);
       border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5); border: 2px solid #fff;
-      animation: pulse 2s infinite;
-      margin: 20px;
+      box-shadow: 0 0 40px rgba(212,175,55,0.6), inset 0 0 15px rgba(255,255,255,0.5);
+      border: 3px solid #fff; animation: pulseGlow 2s infinite;
     }
-    .seal-content span { font-family: 'Cinzel Decorative', serif; font-size: 14px; font-weight: bold; color: #052617; }
+    .seal-ring span { font-family: 'Cinzel Decorative', serif; font-size: 13px; font-weight: bold; color: #08140e; letter-spacing: 1px; }
 
-    /* 2. CARD CONTAINER */
-    .card-wrapper { display: none; padding: 20px; width: 100%; max-width: 450px; perspective: 1000px; margin-top: 20px; }
+    /* ---------------- MAIN INVITATION CARD ---------------- */
+    .card-wrapper { display: none; padding: 20px; width: 100%; max-width: 440px; perspective: 1000px; margin: 20px 0; }
     
     .islamic-card {
       background: #fdfcf8 url('https://www.transparenttextures.com/patterns/rice-paper.png');
-      border-radius: 12px; padding: 40px 20px; text-align: center;
+      border-radius: 16px; padding: 35px 20px; text-align: center;
       box-shadow: 0 30px 60px rgba(0,0,0,0.7);
       position: relative; overflow: hidden;
       border: 2px solid #d4af37;
@@ -86,38 +83,45 @@ DOCTYPE html>
     }
 
     .islamic-card::before {
-      content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
-      border: 1px solid #4a8275; border-radius: 8px; pointer-events: none;
+      content: ''; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px;
+      border: 1px solid #4a8275; border-radius: 12px; pointer-events: none;
     }
 
-    .lantern {
-      position: absolute; top: -10px; width: 40px;
+    /* Hanging Chandelier */
+    .chandelier {
+      width: 90px; margin: 0 auto 10px auto; display: block;
       animation: swing 4s ease-in-out infinite alternate;
       transform-origin: top center;
     }
-    .lantern.left { left: 20px; }
-    .lantern.right { right: 20px; animation-delay: 1s; }
 
-    .bismillah { font-family: 'Amiri', serif; font-size: 34px; color: #0a3d28; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); transform: translateZ(30px); }
+    .bismillah { font-family: 'Amiri', serif; font-size: 32px; color: #0a3d28; margin-bottom: 15px; transform: translateZ(30px); }
+    .invite-line { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #777; margin-bottom: 20px; transform: translateZ(20px); }
     
-    .invite-line { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #666; margin-bottom: 25px; transform: translateZ(20px); }
+    .name { font-family: 'Great Vibes', cursive; font-size: 52px; color: #052617; line-height: 1; transform: translateZ(50px); }
+    .parents { font-size: 11px; font-weight: 500; color: #4a8275; margin: 5px 0 15px 0; font-style: italic; transform: translateZ(30px); }
+    .weds { font-family: 'Cinzel Decorative', serif; font-size: 16px; color: #d4af37; margin: 5px 0; transform: translateZ(20px); }
     
-    .name { font-family: 'Great Vibes', cursive; font-size: 55px; color: #052617; line-height: 0.9; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); transform: translateZ(50px); margin-top: 10px; }
-    
-    .parents { font-size: 12px; font-weight: 500; color: #4a8275; margin-top: 6px; margin-bottom: 15px; font-style: italic; transform: translateZ(30px); }
-    
-    .weds { font-family: 'Cinzel Decorative', serif; font-size: 18px; color: #d4af37; margin: 10px 0; transform: translateZ(20px); }
-    
-    .details { font-size: 13px; color: #333; margin: 25px 0; line-height: 1.8; transform: translateZ(25px); }
+    .details { font-size: 13px; color: #333; margin: 20px 0; line-height: 1.7; transform: translateZ(25px); }
     
     .date-highlight { 
-      font-family: 'Cinzel Decorative', serif; font-size: 20px; color: #0a3d28; 
+      font-family: 'Cinzel Decorative', serif; font-size: 17px; color: #0a3d28; 
       font-weight: bold; margin: 15px 0; padding: 10px; border-top: 1px solid #d4af37; border-bottom: 1px solid #d4af37;
     }
 
-    /* 3. SCRATCH CARD */
+    /* ---------------- COUNTDOWN TIMER ---------------- */
+    .countdown-container {
+      display: flex; justify-content: center; gap: 10px; margin: 20px 0; transform: translateZ(35px);
+    }
+    .countdown-box {
+      background: #0a3d28; color: #fdfcf8; padding: 10px 8px; border-radius: 8px; min-width: 60px;
+      border: 1px solid #d4af37; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .countdown-box span { display: block; font-family: 'Cinzel Decorative', serif; font-size: 18px; font-weight: bold; color: #d4af37; }
+    .countdown-box small { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #ccc; }
+
+    /* ---------------- SCRATCH CARD ---------------- */
     .scratch-wrapper {
-      position: relative; width: 290px; height: 90px; margin: 25px auto;
+      position: relative; width: 280px; height: 85px; margin: 20px auto;
       border-radius: 8px; overflow: hidden;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2); transform: translateZ(40px);
       border: 1px solid #d4af37;
@@ -126,73 +130,77 @@ DOCTYPE html>
       position: absolute; width: 100%; height: 100%; top: 0; left: 0;
       background: #eef5f2; display: flex; flex-direction: column;
       justify-content: center; align-items: center; padding: 10px;
-      font-family: 'Amiri', serif; color: #052617; font-size: 18px; font-weight: bold;
+      font-family: 'Amiri', serif; color: #052617; font-size: 16px; font-weight: bold;
     }
-    .dua-secret p { font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 500; margin-top: 5px; color: #4a8275;}
+    .dua-secret p { font-size: 10px; font-family: 'Montserrat', sans-serif; font-weight: 500; margin-top: 3px; color: #4a8275;}
     canvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: pointer; touch-action: none; }
 
-    /* 4. BUTTONS */
+    /* ---------------- BUTTON ---------------- */
     .btn {
       display: inline-block; background: linear-gradient(135deg, #0a3d28 0%, #115c3a 100%);
-      color: #fff; padding: 14px 30px; border-radius: 30px; text-decoration: none;
-      font-size: 12px; font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 1px;
-      box-shadow: 0 10px 20px rgba(10, 61, 40, 0.4); transform: translateZ(30px);
+      color: #fff; padding: 12px 25px; border-radius: 30px; text-decoration: none;
+      font-size: 11px; font-family: 'Montserrat', sans-serif; font-weight: 600; letter-spacing: 1px;
+      box-shadow: 0 8px 20px rgba(10, 61, 40, 0.4); transform: translateZ(30px);
       border: 1px solid #d4af37; transition: all 0.3s ease; margin-top: 10px;
     }
-    .btn:active { transform: scale(0.95) translateZ(30px); }
 
-    /* Animations */
-    @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 15px #d4af37; } 50% { transform: scale(1.05); box-shadow: 0 0 30px #f3e5ab; } 100% { transform: scale(1); box-shadow: 0 0 15px #d4af37; } }
-    @keyframes slowSpin { 100% { transform: rotate(360deg); } }
-    @keyframes swing { 0% { transform: rotate(-5deg); } 100% { transform: rotate(5deg); } }
+    @keyframes pulseGlow { 0% { transform: scale(1); box-shadow: 0 0 20px #d4af37; } 50% { transform: scale(1.06); box-shadow: 0 0 40px #f3e5ab; } 100% { transform: scale(1); box-shadow: 0 0 20px #d4af37; } }
+    @keyframes swing { 0% { transform: rotate(-4deg); } 100% { transform: rotate(4deg); } }
   </style>
 </head>
 <body>
 
-  <!-- Islamic Music Audio Tag -->
+  <!-- Audio -->
   <audio id="bgMusic" loop preload="auto">
-    <source src="wedding_nasheed.mp3" type="audio/mpeg">
+    <source src="song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- 3D Velvet Curtains & Tap Seal -->
+  <!-- 3D Velvet Curtains & Open Seal -->
   <div id="curtain-container">
     <div id="left-curtain" class="curtain"></div>
     <div id="right-curtain" class="curtain"></div>
   </div>
 
   <div id="tap-seal" onclick="startExperience()">
-    <div class="mandala-bg"></div>
-    <div class="seal-content">
-      <span>TAP TO<br>OPEN</span>
+    <div class="seal-ring">
+      <span>OPEN<br>INVITATION</span>
     </div>
   </div>
 
-  <!-- Main 3D Invitation Card -->
+  <!-- Main 3D Card -->
   <div class="card-wrapper" id="main-content">
     <div class="islamic-card" id="tilt-card">
       
-      <!-- Hanging Lanterns -->
-      <img src="https://www.svgrepo.com/show/330836/lantern.svg" class="lantern left" style="filter: invert(62%) sepia(51%) saturate(614%) hue-rotate(5deg) brightness(97%) contrast(89%);">
-      <img src="https://www.svgrepo.com/show/330836/lantern.svg" class="lantern right" style="filter: invert(62%) sepia(51%) saturate(614%) hue-rotate(5deg) brightness(97%) contrast(89%);">
-      
+      <!-- Chandelier Graphic -->
+      <svg class="chandelier" viewBox="0 0 24 24" fill="#d4af37"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z"/></svg>
+
       <div class="bismillah">بسم الله الرحمن الرحيم</div>
-      
       <div class="invite-line">We Request The Honour Of Your Presence</div>
       
-      <!-- Bride Info -->
+      <!-- Bride -->
       <div class="name">Madiha</div>
-      <div class="parents">Daughter of Mr. & Mrs. A. Basit Shaikh</div>
+      <div class="parents">D/o Mr. & Mrs. A. Basit Shaikh</div>
       
       <div class="weds">Weds</div>
       
-      <!-- Groom Info -->
+      <!-- Groom -->
       <div class="name">Azan</div>
-      <div class="parents">Son of Mr. & Mrs. Javed Shaikh</div>
+      <div class="parents">S/o Mr. & Mrs. Javed Shaikh</div>
 
       <div class="details">
-        To share our joy and celebrate our wedding ceremony on the auspicious day of
-        <div class="date-highlight">12 NOVEMBER, 2026</div>
-        <b>Aqd (Nikah) - 7:00 PM Onwards</b>
+        To share our joy and celebrate our wedding ceremony
+        <div class="date-highlight">
+          12 NOVEMBER, 2026<br>
+          <span style="font-size: 13px; font-weight: normal; color: #4a8275;">Aqd (Nikah) - Asr (5:00 PM Onwards)</span>
+        </div>
+      </div>
+
+      <!-- Live Countdown Watch -->
+      <div class="countdown-container">
+        <div class="countdown-box"><span id="days">00</span><small>Days</small></div>
+        <div class="countdown-box"><span id="hours">00</span><small>Hours</small></div>
+        <div class="countdown-box"><span id="mins">00</span><small>Mins</small></div>
+        <div class="countdown-box"><span id="secs">00</span><small>Secs</small></div>
       </div>
 
       <!-- Scratch Card Feature -->
@@ -201,62 +209,80 @@ DOCTYPE html>
           بارك الله لكما وبارك عليكما
           <p>May Allah bless you both with endless love.</p>
         </div>
-        <canvas id="scratchCanvas" width="290" height="90"></canvas>
+        <canvas id="scratchCanvas" width="280" height="85"></canvas>
       </div>
 
       <div class="details" style="font-size: 12px; margin-top: 15px;">
         <b>VENUE</b><br>
-        <span style="color: #4a8275; font-size: 14px; font-weight: 600;">Hamidiya Function Hall</span><br>
-        (Click below for exact location)
+        <span style="color: #4a8275; font-size: 14px; font-weight: 600;">Hamidiya Function Hall</span>
       </div>
 
-      <!-- Google Maps Link -->
-      <a href="https://maps.app.goo.gl/FaJvCyufFj4SQwsj6?g_st=ac" target="_blank" class="btn">📍 OPEN IN MAPS</a>
+      <a href="https://maps.app.goo.gl/FaJvCyufFj4SQwsj6?g_st=ac" target="_blank" class="btn">📍 OPEN IN GOOGLE MAPS</a>
 
     </div>
   </div>
 
   <script>
     function startExperience() {
-      // 1. Play Background Music
+      // 1. Play Music
       var music = document.getElementById('bgMusic');
       if (music) {
-        music.volume = 0.7;
-        var playPromise = music.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(function(error) {
-            console.log("Audio play blocked:", error);
-          });
-        }
+        music.volume = 0.8;
+        music.play().catch(e => console.log("Audio play blocked"));
       }
 
-      // 2. Hide Seal & Open 3D Curtains
-      document.getElementById('tap-seal').style.transform = 'translate(-50%, -50%) scale(2)';
+      // 2. Hide Seal & Open Curtains
+      document.getElementById('tap-seal').style.transform = 'translate(-50%, -50%) scale(2.5)';
       document.getElementById('tap-seal').style.opacity = '0';
-      setTimeout(function() { document.getElementById('tap-seal').style.display = 'none'; }, 800);
+      setTimeout(() => { document.getElementById('tap-seal').style.display = 'none'; }, 800);
 
       document.getElementById('left-curtain').classList.add('open-left');
       document.getElementById('right-curtain').classList.add('open-right');
 
-      // 3. Show Card & Init 3D Effects
-      setTimeout(function() {
+      // 3. Show Card & Init 3D Tilt + Countdown
+      setTimeout(() => {
         document.getElementById('curtain-container').style.display = 'none';
         document.getElementById('main-content').style.display = 'block';
         
         if (typeof VanillaTilt !== 'undefined') {
           VanillaTilt.init(document.querySelector("#tilt-card"), {
-            max: 12,          
-            speed: 400,       
-            glare: true,      
-            "max-glare": 0.3, 
-            gyroscope: true   
+            max: 12, speed: 400, glare: true, "max-glare": 0.3, gyroscope: true
           });
         }
 
         setupScratchCard();
+        startCountdown();
       }, 1500);
     }
 
+    // Stop music automatically when user leaves or closes the page
+    window.addEventListener('beforeunload', () => {
+      const music = document.getElementById('bgMusic');
+      if (music) music.pause();
+    });
+    window.addEventListener('pagehide', () => {
+      const music = document.getElementById('bgMusic');
+      if (music) music.pause();
+    });
+
+    // Countdown Logic for Nov 12, 2026, 17:00:00 (Asr 5:00 PM)
+    function startCountdown() {
+      const weddingDate = new Date("November 12, 2026 17:00:00").getTime();
+      
+      setInterval(() => {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+        
+        if (distance > 0) {
+          document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+          document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+          document.getElementById("mins").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+          document.getElementById("secs").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+        }
+      }, 1000);
+    }
+
+    // Scratch Card Logic
     function setupScratchCard() {
       const canvas = document.getElementById('scratchCanvas');
       if (!canvas) return;
@@ -270,9 +296,9 @@ DOCTYPE html>
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = '#052617';
-      ctx.font = '600 14px Montserrat';
+      ctx.font = '600 13px Montserrat';
       ctx.textAlign = 'center';
-      ctx.fillText('✨ Scratch For A Special Dua ✨', canvas.width/2, 50);
+      ctx.fillText('✨ Scratch For A Special Dua ✨', canvas.width/2, 48);
 
       let isDragging = false;
       function scratch(e) {
@@ -285,7 +311,7 @@ DOCTYPE html>
         
         ctx.globalCompositeOperation = 'destination-out';
         ctx.beginPath();
-        ctx.arc(x, y, 22, 0, Math.PI * 2);
+        ctx.arc(x, y, 20, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -298,3 +324,5 @@ DOCTYPE html>
       canvas.addEventListener('touchmove', scratch, {passive: false});
     }
   </script>
+</body>
+</html>
