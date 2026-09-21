@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #122317;
+      font-family: 'Montserrat', sans-serif;
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Screen 1: Tap to Open Overlay */
+    #cover {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #1a3322 url('https://www.transparenttextures.com/patterns/paper.png');
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.8s ease-in-out;
+    }
+    .open-btn {
+      background: #c5a059;
+      color: #fff;
+      padding: 15px 30px;
+      border: 2px solid #e2c077;
+      border-radius: 30px;
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite;
+    }
+
+    /* Card Container */
+    .card-container {
+      width: 100%;
+      max-width: 450px;
+      background: #fdfaf3 url('https://www.transparenttextures.com/patterns/cream-paper.png');
+      border: 12px solid #1a3322;
+      outline: 2px solid #c5a059;
+      padding: 25px 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      margin: 10px;
+      border-radius: 8px;
+    }
+
+    h1, h2 { font-family: 'Cinzel', serif; color: #1a3322; }
+    .script-font { font-family: 'Great Vibes', cursive; color: #c5a059; font-size: 38px; }
+
+    /* Scratch Card Section */
+    .scratch-container {
+      position: relative;
+      width: 280px;
+      height: 80px;
+      margin: 20px auto;
+      border: 2px dashed #c5a059;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .scratch-secret {
+      position: absolute;
+      width: 100%; height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f4ece1;
+      font-weight: 600;
+      color: #1a3322;
+    }
+    canvas { position: absolute; top: 0; left: 0; z-index: 2; touch-action: none; }
+
+    /* Countdown Timer */
+    .timer { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+    .timer-box {
+      background: #1a3322; color: #e2c077;
+      padding: 10px; border-radius: 6px; min-width: 60px;
+    }
+    .timer-box span { display: block; font-size: 18px; font-weight: bold; }
+    .timer-box label { font-size: 10px; text-transform: uppercase; }
+
+    /* Buttons */
+    .btn {
+      display: inline-block; background: #1a3322; color: #e2c077;
+      padding: 10px 20px; border-radius: 20px; text-decoration: none;
+      font-size: 12px; font-weight: 600; margin-top: 10px; border: 1px solid #c5a059;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Element -->
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Cover / Tap to Open Screen -->
+  <div id="cover">
+    <div style="color: #e2c077; font-family: 'Great Vibes', cursive; font-size: 40px; margin-bottom: 20px;">Bismillah</div>
+    <button class="open-btn" onclick="openInvitation()">TAP TO OPEN</button>
+  </div>
+
+  <!-- Main Wedding Card -->
+  <div class="card-container">
+    <p style="letter-spacing: 3px; font-size: 12px; color: #c5a059;">WE ARE GETTING MARRIED</p>
+    
+    <div class="script-font" style="margin-top: 10px;">Zayn</div>
+    <p style="font-size: 12px; color: #666;">Son of Mr. & Mrs. Malik</p>
+    
+    <div class="script-font" style="font-size: 28px; color: #1a3322;">&</div>
+    
+    <div class="script-font">Nora</div>
+    <p style="font-size: 12px; color: #666;">Daughter of Mr. & Mrs. Nasser</p>
+
+    <hr style="border: 0; height: 1px; background: #c5a059; margin: 20px 0;">
+
+    <!-- Scratch Card Effect -->
+    <p style="font-size: 12px; color: #1a3322;">Scratch for Special Note:</p>
+    <div class="scratch-container">
+      <div class="scratch-secret">✨ Your presence is our best gift! ✨</div>
+      <canvas id="scratchCanvas" width="280" height="80"></canvas>
+    </div>
+
+    <!-- Countdown Timer -->
+    <p style="font-size: 12px; font-weight: 600; color: #1a3322;">COUNTDOWN TO THE BIG DAY</p>
+    <div class="timer">
+      <div class="timer-box"><span id="days">00</span><label>Days</label></div>
+      <div class="timer-box"><span id="hours">00</span><label>Hours</label></div>
+      <div class="timer-box"><span id="mins">00</span><label>Mins</label></div>
+      <div class="timer-box"><span id="secs">00</span><label>Secs</label></div>
+    </div>
+
+    <!-- Save Date Button -->
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Zayn+%26+Nora+Wedding&dates=20261130T103000Z/20261130T140000Z" target="_blank" class="btn">🗓️ SAVE THE DATE</a>
+
+    <!-- Venue & Map -->
+    <div style="margin-top: 25px;">
+      <h3 style="font-family: 'Cinzel'; font-size: 16px; color: #1a3322;">VENUE</h3>
+      <p style="font-size: 13px; margin-top: 5px;">Grand Palace Hall, City Centre</p>
+      <a href="https://maps.google.com" target="_blank" class="btn" style="background: transparent; color: #1a3322; border: 1px solid #1a3322;">📍 OPEN IN GOOGLE MAPS</a>
+    </div>
+  </div>
+
+  <script>
+    // Audio & Cover Logic
+    function openInvitation() {
+      document.getElementById('cover').style.opacity = '0';
+      setTimeout(() => { document.getElementById('cover').style.display = 'none'; }, 800);
+      document.getElementById('bgMusic').play();
+    }
+
+    // Countdown Logic
+    const weddingDate = new Date("Nov 30, 2026 10:30:00").getTime();
+    setInterval(function() {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+      document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+    }, 1000);
+
+    // Scratch Card Logic
+    const canvas = document.getElementById('scratchCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#c5a059';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '14px Montserrat';
+    ctx.textAlign = 'center';
+    ctx.fillText('Scratch Here 👋', canvas.width/2, 45);
+
+    function scratch(e) {
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches ? e.touches[0] : e;
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath();
+      ctx.arc(x, y, 15, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    canvas.addEventListener('touchmove', scratch);
+    canvas.addEventListener('mousemove', scratch);
+  </script>
+</body>
+</html>
+
